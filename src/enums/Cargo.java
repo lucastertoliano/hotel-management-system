@@ -1,0 +1,7 @@
+package enums;
+
+public enum Cargo {
+	
+	GERENTE, SUPERVISOR, RECEPCIONISTA, GARCOM, COZINHEIRO, LIMPEZA
+
+}
