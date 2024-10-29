@@ -23,7 +23,7 @@ public class Main {
 	        	gerenciarQuartos(sc, hotel);
 	            break;
 	        case 2:
-	        	//gerenciadorHospedes(sc, hotel);
+	        	gerenciadorHospedes(sc, hotel);
 	            break;
 	        case 3:
 	        	//gerenciadorReservas(sc, hotel);
@@ -68,6 +68,32 @@ public class Main {
             }
         } while (opcaoQuartos != 4);
 		
+	}
+	
+	private static void gerenciadorHospedes(Scanner sc, Hotel hotel) {
+		int opcaoHospede;
+		
+		do {
+			System.out.println("\n ===== Menu Hóspedes ===== \n [1] Cadastrar \n [2] Vizualizar Histórico \n [3] Atualizar Seus Dados \n [4] Voltar ao Menu de Gerenciamento");
+            System.out.print("Informe a opção desejada: ");
+            opcaoHospede = sc.nextInt();
+            sc.nextLine(); 
+		
+		switch(opcaoHospede) {
+		case 1:
+			hotel.cadastrarHospede();
+			break;
+		case 2:
+		    //hotel.historicoEstadia();
+			break;
+		case 3:
+			//hotel.editarHopesde();
+		case 4:
+			System.out.println(" --- Menu Hóspedes Encerrado ---");
+		default:
+			System.out.println("Opção inválida! Tente escolher um número entre 1 e 4.");
+				}
+			}while (opcaoHospede != 4);
 	}
 	
 	private static void gerenciadorFuncionarios(Scanner sc, Hotel hotel) {

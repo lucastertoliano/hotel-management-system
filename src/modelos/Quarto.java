@@ -3,7 +3,7 @@ package modelos;
 import enums.Status;
 import enums.Tipo;
 
-public class Quarto { //talvez add atributo status que inicia disponivel no construtor
+public class Quarto { 
 
 	private int numero;
 	private Tipo tipo;

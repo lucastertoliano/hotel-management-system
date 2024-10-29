@@ -18,7 +18,6 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 		quartos = new ArrayList<>();
 	}
 
-	@Override
 	public void cadastrar() {
 		System.out.print("Informe a numeração do quarto: ");
 		int numeroQuarto = sc.nextInt();

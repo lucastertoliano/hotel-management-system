@@ -43,5 +43,10 @@ public class Hotel {
 	public void calcularSalario() {
 		gerenciadorFuncionario.calcularSalario();
 	}
+
+	public void cadastrarHospede() {
+		gerenciadorFuncionario.cadastrar();
+		
+	}
 	
 }
