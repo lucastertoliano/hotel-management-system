@@ -6,6 +6,7 @@ public interface GerenciamentoInterface {
 	void vizualizar();
 	void atualizar();
 	void editar();
+	void registrarHoras();
 	void calcularSalario();
 	void criar();
 	void cancelar();

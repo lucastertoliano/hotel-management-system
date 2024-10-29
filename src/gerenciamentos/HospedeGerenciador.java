@@ -35,6 +35,11 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	}
 
 	@Override
+	public void registrarHoras() {
+		System.out.println("Registrar horas trabalhadas não é aplicável para hóspedes.");
+	}
+	
+	@Override
 	public void calcularSalario() {
 		
 	}

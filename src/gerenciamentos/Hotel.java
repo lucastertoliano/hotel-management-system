@@ -24,4 +24,24 @@ public class Hotel {
 		gerenciadorQuarto.atualizar();
 	}
 	
+	public void cadastrarFuncionario() {
+		gerenciadorFuncionario.cadastrar();
+	}
+	
+	public void vizualizarFuncionario() {
+		gerenciadorFuncionario.vizualizar();
+	}
+	
+	public void editarFuncionario() {
+		gerenciadorFuncionario.editar();
+	}
+	
+	public void registrarHorasTrabalhadas() {
+		gerenciadorFuncionario.registrarHoras();
+	}
+	
+	public void calcularSalario() {
+		gerenciadorFuncionario.calcularSalario();
+	}
+	
 }

@@ -22,8 +22,10 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 	public void cadastrar() {
 		System.out.print("Informe a numeração do quarto: ");
 		int numeroQuarto = sc.nextInt();
+		
 		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
 		int opcaoTipo = sc.nextInt();
+		
 		Tipo tipoQuarto = null;
 		switch (opcaoTipo) {
         case 1:
@@ -39,10 +41,13 @@ public class QuartoGerenciador implements GerenciamentoInterface {
             System.out.println("Opção inválida! Tente novamente.");
             return;
 		}
+		
 		System.out.print("Informe o número de hóspedes: ");
 		int numeroHospedes = sc.nextInt();
+		
 		System.out.print("Informe o valor da diária: ");
 		double valorDiaria = sc.nextDouble();
+		
 		Quarto quarto = new Quarto(numeroQuarto, tipoQuarto, numeroHospedes, valorDiaria);
 		quartos.add(quarto);
 		System.out.println("Quarto cadastrado com sucesso!");
@@ -108,6 +113,11 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 		System.out.println("Editar não é aplicável para quartos.");
 	}
 
+	@Override
+	public void registrarHoras() {
+		System.out.println("Registrar horas trabalhadas não é aplicável para quartos.");
+	}
+	
 	@Override
 	public void calcularSalario() {
 		System.out.println("Calcular Salário não é aplicável para quartos.");
