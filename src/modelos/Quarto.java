@@ -64,6 +64,4 @@ public class Quarto {
 		return "Quarto " + numero + ", Tipo: " + tipo + ", Capacidade: " + capacidade + ", Diária: " + diaria + ", Status: " + status;
 	}
 	
-	
-	
 }
