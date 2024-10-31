@@ -1,5 +1,7 @@
 package interfaces;
 
+import excecoes.QuartoIndisponivelException;
+
 public interface GerenciamentoInterface {
 	
 	void cadastrar();
@@ -10,7 +12,8 @@ public interface GerenciamentoInterface {
 	void calcularSalario();
 	void criar();
 	void cancelar();
-	void disponibilidade();
+	void disponibilidade() throws QuartoIndisponivelException;
+
 	
 }
 

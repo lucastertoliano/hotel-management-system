@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import enums.Cargo;
+import enums.Turno;
 import interfaces.GerenciamentoInterface;
+import modelos.Funcionario;
 import modelos.Hospede;
+import modelos.Quarto;
 
 public class HospedeGerenciador implements GerenciamentoInterface {
 
@@ -41,7 +45,15 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	}
 
 	@Override
-	public void vizualizar() {
+	public void vizualizar() { // acessar reservas hospede
+		if ()) {
+			System.out.println("Não temos nenhuma Reserva cadastrada!");
+		}
+		else {
+			for (Hospede hospede : hospedes) {
+				System.out.println(hospedHes);
+			}
+		}
 		
 	}
 
@@ -52,7 +64,39 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 
 	@Override
 	public void editar() {
+		System.out.print("Informe o CPF: ");
+		String cpf = sc.nextLine();
 		
+		for (Hospede hospede : hospedes) {
+			if (hospede.getCpf().equals(cpf)) { 
+				
+				System.out.print("Informe o nome: ");
+				String nome = sc.nextLine();
+				hospede.setNome(nome);
+				
+				System.out.print("Informe o CPF novamente: ");
+				String cpfEdicao = sc.nextLine();
+				hospede.setCpf(cpfEdicao);
+				
+				System.out.print("Informe a data de nascimento: ");
+				int dataDeNascimento = sc.nextInt();
+				sc.nextLine();
+				hospede.setDataDeNascimento(dataDeNascimento);
+				
+				System.out.print("Informe o endereço: ");
+				String esdereco = sc.nextLine();
+				hospede.setEndereco(esdereco);;
+				
+				System.out.print("Informe o número de contato: ");
+				int numeroDeContato = sc.nextInt();
+				sc.nextLine();
+				hospede.setNumeroDeContato(numeroDeContato);
+				
+				System.out.println("Hóspede editado com sucesso!");
+				return;
+			}
+		}
+		System.out.println("CPF não encontrado! Tente Novamente.");
 	}
 
 	@Override

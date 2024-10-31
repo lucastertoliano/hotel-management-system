@@ -1,15 +1,19 @@
 package gerenciamentos;
 
+import excecoes.QuartoIndisponivelException;
+
 public class Hotel {
 	
 	private QuartoGerenciador gerenciadorQuarto;
-	private HospedeGerenciador gerenciadorHopede;
+	private HospedeGerenciador gerenciadorHospede;
 	private FuncionarioGerenciador gerenciadorFuncionario;
+	private ReservaGerenciador gerenciadorReserva;
 	
 	public Hotel() {
 		gerenciadorQuarto = new QuartoGerenciador();
-		gerenciadorHopede = new HospedeGerenciador();
+		gerenciadorHospede = new HospedeGerenciador();
 		gerenciadorFuncionario = new FuncionarioGerenciador();
+		gerenciadorReserva = new ReservaGerenciador();
 	}
 	
 	public void cadastrarQuarto() {
@@ -22,6 +26,26 @@ public class Hotel {
 	
 	public void atualizarStatus() {
 		gerenciadorQuarto.atualizar();
+	}
+	
+	public void cadastrarHospede() {
+		gerenciadorHospede.cadastrar();
+	}
+	
+	public void vizualizarHistoricoDeEstadias() {
+		
+	}
+	
+	public void editarHospede() {
+		gerenciadorHospede.editar();
+	}
+	
+	public void verificarDisponibilidade () {
+		try {
+			gerenciadorQuarto.disponibilidade();
+		}catch (QuartoIndisponivelException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void cadastrarFuncionario() {
@@ -42,11 +66,6 @@ public class Hotel {
 	
 	public void calcularSalario() {
 		gerenciadorFuncionario.calcularSalario();
-	}
-
-	public void cadastrarHospede() {
-		gerenciadorFuncionario.cadastrar();
-		
 	}
 	
 }

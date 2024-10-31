@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import enums.Status;
 import enums.Tipo;
+import excecoes.QuartoIndisponivelException;
 import interfaces.GerenciamentoInterface;
 import modelos.Quarto;
 
@@ -66,7 +67,7 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 	}
 
 	@Override
-	public void atualizar() { //pensar em formas de acessar determinado quarto. Numero é uma opção boa::
+	public void atualizar() { 
 		System.out.print("Informe o número do quarto que terá o status atualizado: ");
 		int numeroQuarto = sc.nextInt();
 		Quarto quartoEncontrado = null;
@@ -133,8 +134,16 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 	}
 
 	@Override
-	public void disponibilidade() {
-		System.out.println("Disponibilidade não é aplicável para quartos.");
+	public void disponibilidade() throws QuartoIndisponivelException {
+		if (!quartos.isEmpty()) {
+			for (Quarto quarto : quartos) {
+				if(quarto.getStatus() == Status.DISPONIVEL) {
+					System.out.println("Quarto " + quarto.getNumero() + " Disponível para reserva!");
+				} else {
+					throw new QuartoIndisponivelException("Quarto " + quarto.getNumero() + " Ocupado no momento!");
+				}
+			}
+		}
+		
 	}
-
 }

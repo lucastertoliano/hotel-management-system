@@ -1,5 +1,8 @@
 package modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import abstracoes.Pessoa;
 
 public class Hospede extends Pessoa { 
@@ -7,12 +10,14 @@ public class Hospede extends Pessoa {
 	private int dataDeNascimento;
 	private String endereco;
 	private int numeroDeContato;
+	private ArrayList<Reserva> reservas;
 
 	public Hospede(String nome, String cpf, int dataDeNascimento, String endereco, int numeroDeContatos) {
 		super(nome, cpf);
 		this.dataDeNascimento = dataDeNascimento;
 		this.endereco = endereco;
 		this.numeroDeContato = numeroDeContatos;
+		this.reservas = new ArrayList<>();
 	}
 
 	public int getDataDeNascimento() {
@@ -37,6 +42,14 @@ public class Hospede extends Pessoa {
 
 	public void setNumeroDeContato(int numeroDeContato) {
 		this.numeroDeContato = numeroDeContato;
+	}
+
+	public ArrayList<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(ArrayList<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 
 	@Override

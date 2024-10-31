@@ -74,7 +74,7 @@ public class Main {
 		int opcaoHospede;
 		
 		do {
-			System.out.println("\n ===== Menu Hóspedes ===== \n [1] Cadastrar \n [2] Vizualizar Histórico \n [3] Atualizar Seus Dados \n [4] Voltar ao Menu de Gerenciamento");
+			System.out.println("\n ===== Menu Hóspedes ===== \n [1] Cadastrar \n [2] Vizualizar Histórico \n [3] Editar \n [4] Voltar ao Menu de Gerenciamento");
             System.out.print("Informe a opção desejada: ");
             opcaoHospede = sc.nextInt();
             sc.nextLine(); 
