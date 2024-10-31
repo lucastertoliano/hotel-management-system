@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import abstracoes.Pessoa;
 import enums.Cargo;
 import enums.Turno;
 import interfaces.GerenciamentoInterface;
 import modelos.Funcionario;
 import modelos.Hospede;
 import modelos.Quarto;
+import modelos.Reserva;
 
 public class HospedeGerenciador implements GerenciamentoInterface {
 
@@ -46,15 +48,26 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 
 	@Override
 	public void vizualizar() { // acessar reservas hospede
-		if ()) {
+		if (hospedes.isEmpty()) {
 			System.out.println("Não temos nenhuma Reserva cadastrada!");
 		}
 		else {
 			for (Hospede hospede : hospedes) {
-				System.out.println(hospedHes);
+				System.out.println("Hóspede: " + hospede.getNome() + " | CPF: " + hospede.getCpf());
 			}
 		}
-		
+		/*if (((Hospede) hospedes).getReservas().isEmpty()) { 
+			System.out.println("- Nenhuma reserva encontrada para este hóspede.");
+		}else {
+			System.out.println(" Reserva: ");
+			for (Reserva reserva : Hospede.getReservas()){
+				System.out.println("- Reserva de:" + reserva.Hospede.getNome());
+			    System.out.println("Data de entrada: " + reserva.getDataEntrada());
+			    System.out.println("Data de saída: " + reserva.getDataSaida());
+				System.out.println( "Quarto: " + + reserva.getNumero() + " (" + reserva.getTipo() + ")");
+			}
+		}
+		*/
 	}
 
 	@Override

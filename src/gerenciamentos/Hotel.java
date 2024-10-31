@@ -33,7 +33,7 @@ public class Hotel {
 	}
 	
 	public void vizualizarHistoricoDeEstadias() {
-		
+		gerenciadorHospede.vizualizar();
 	}
 	
 	public void editarHospede() {
