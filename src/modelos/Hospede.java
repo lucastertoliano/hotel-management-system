@@ -53,7 +53,7 @@ public class Hospede extends Pessoa {
 	}
 	public void adicionarReserva(Reserva reserva) {
 	        reservas.add(reserva);
-	    }
+	}
 
 	@Override
 	public String toString() {

@@ -4,14 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import abstracoes.Pessoa;
-import enums.Cargo;
-import enums.Turno;
 import interfaces.GerenciamentoInterface;
-import modelos.Funcionario;
 import modelos.Hospede;
-import modelos.Quarto;
-import modelos.Reserva;
 
 public class HospedeGerenciador implements GerenciamentoInterface {
 
@@ -47,7 +41,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	}
 
 	@Override
-	public void vizualizar() { // acessar reservas hospede
+	public void vizualizar() { // mostrar a lista de reservas do hospede reservas hospede
 		if (hospedes.isEmpty()) {
 			System.out.println("Não temos nenhuma Reserva cadastrada!");
 		}
@@ -138,6 +132,5 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	public void disponibilidade() {
 		System.out.println("Disponibilidade não é aplicável para Hóspedes.");
 	}
-
 	
 }
