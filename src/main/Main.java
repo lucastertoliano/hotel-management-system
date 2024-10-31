@@ -84,10 +84,10 @@ public class Main {
 			hotel.cadastrarHospede();
 			break;
 		case 2:
-		    //hotel.historicoEstadia();
-			break;
+		    //hotel.vizualizarHospede();
+		    break;
 		case 3:
-			//hotel.editarHopesde();
+			hotel.editarHospede();
 		case 4:
 			System.out.println(" --- Menu Hóspedes Encerrado ---");
 		default:
