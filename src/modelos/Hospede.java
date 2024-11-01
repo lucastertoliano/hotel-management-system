@@ -48,11 +48,8 @@ public class Hospede extends Pessoa {
 		return reservas;
 	}
 
-	public void setReservas(ArrayList<Reserva> reservas) {
-		this.reservas = reservas;
-	}
-	public void adicionarReserva(Reserva reserva) {
-	        reservas.add(reserva);
+	public void setReservas(Reserva reserva) {
+		this.reservas.add(reserva);
 	}
 
 	@Override

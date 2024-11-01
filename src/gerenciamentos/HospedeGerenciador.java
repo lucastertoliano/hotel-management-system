@@ -42,7 +42,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 
 	@Override
 	public void vizualizar() { // mostrar a lista de reservas do hospede reservas hospede
-		if (hospedes.isEmpty()) {
+		if () {
 			System.out.println("Não temos nenhuma Reserva cadastrada!");
 		}
 		else {
