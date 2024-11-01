@@ -96,6 +96,7 @@ public class Main {
 			}while (opcaoHospede != 4);
 	}
 	
+	
 	private static void gerenciadorFuncionarios(Scanner sc, Hotel hotel) {
 		int opcaoFuncionarios;
 		

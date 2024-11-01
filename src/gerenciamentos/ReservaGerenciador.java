@@ -22,52 +22,134 @@ public class ReservaGerenciador implements GerenciamentoInterface {
 		reservas = new ArrayList<>();
 	}
 	
-	public void cadastrarReserva(Quarto quarto) {
+	public void cadastrarReserva(Quarto quarto, Hospede hospede) {
 		
+		System.out.println("Informe o CPF do Hóspede: ");
+		String cpf = sc.nextLine();
+		
+		System.out.println("Informe a data do Check-In a seguir: ");
+		System.out.print("Dia: ");
+		int diaEntrada = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Mês: ");
+		int mesEntrada = sc.nextInt(); 
+		sc.nextLine();
+		System.out.print("Ano: ");
+		int anoEntrada = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Informe a data do Check-Out a seguir: ");
+		System.out.print("Dia: ");
+		int diaSaida = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Mês: ");
+		int mesSaida = sc.nextInt(); 
+		sc.nextLine();
+		System.out.print("Ano: ");
+		int anoSaida = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
+		int opcaoTipo = sc.nextInt();
+		
+		Tipo tipoQuarto = null;
+		switch (opcaoTipo) {
+        case 1:
+        	tipoQuarto = Tipo.SOLTEIRO;
+            break;
+        case 2:
+        	tipoQuarto = Tipo.CASAL;
+            break;
+        case 3:
+        	tipoQuarto = Tipo.SUITE;
+            break;
+        default:
+            System.out.println("Opção inválida! Tente novamente.");
+            return;
+		}
+		
+		System.out.println("Informe o número de hóspedes: ");
+		int numeroDeHospedes = sc.nextInt();
+	    
+	    LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
+	    LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida);
+	    
+	    long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
+	    
+	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
+	    hospede.setReservas(reserva);
 	}
 	
 	@Override
 	public void cadastrar() {
 		
-//		System.out.println("Informe o CPF do Hóspede: ");
-//		String cpf = sc.nextLine();
-//		
-//		
-//		
-//		System.out.println("Informe a data do Check-In a seguir: ");
-//		System.out.print("Dia: ");
-//		String diaCheckIn = sc.nextLine();
-//		System.out.print("Mês: ");
-//		String mesCheckIn = sc.nextLine();
-//		System.out.print("Ano: ");
-//		String anoCheckIn = sc.nextLine();
-//		
-//		System.out.println("Informe a data do Check-Out a seguir: ");
-//		System.out.print("Dia: ");
-//		String diaCheckOut = sc.nextLine();
-//		System.out.print("Mês: ");
-//		String mesCheckOut = sc.nextLine();
-//		System.out.print("Ano: ");
-//		String anoCheckOut = sc.nextLine();
-//		
-//		int diaIn = Integer.parseInt(diaCheckIn);
-//	    int mesIn = Integer.parseInt(mesCheckIn);
-//	    int anoIn = Integer.parseInt(anoCheckIn);
-//	    
-//	    int diaOut = Integer.parseInt(diaCheckOut);
-//	    int mesOut = Integer.parseInt(mesCheckOut);
-//	    int anoOut = Integer.parseInt(anoCheckOut);
-//	    
-//	    LocalDate dataCheckIn = LocalDate.of(diaIn, mesIn, anoIn);
-//	    LocalDate dataCheckOut = LocalDate.of(diaOut, mesOut, anoOut);
-//	    
-//	 
-//		
-//	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut);
-//	    criar reserva new reserva e passar as informações
-//	    
-//	    
-//	    long diasEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
+		System.out.println("Informe o CPF do Hóspede: ");
+		String cpf = sc.nextLine();
+		
+		System.out.println("Informe a data do Check-In a seguir: ");
+		System.out.print("Dia: ");
+		int diaEntrada = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Mês: ");
+		int mesEntrada = sc.nextInt(); 
+		sc.nextLine();
+		System.out.print("Ano: ");
+		int anoEntrada = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Informe a data do Check-Out a seguir: ");
+		System.out.print("Dia: ");
+		int diaSaida = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Mês: ");
+		int mesSaida = sc.nextInt(); 
+		sc.nextLine();
+		System.out.print("Ano: ");
+		int anoSaida = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
+		int opcaoTipo = sc.nextInt();
+		
+		Tipo tipoQuarto = null;
+		switch (opcaoTipo) {
+        case 1:
+        	tipoQuarto = Tipo.SOLTEIRO;
+            break;
+        case 2:
+        	tipoQuarto = Tipo.CASAL;
+            break;
+        case 3:
+        	tipoQuarto = Tipo.SUITE;
+            break;
+        default:
+            System.out.println("Opção inválida! Tente novamente.");
+            return;
+		}
+		
+		System.out.println("Informe o número de hóspedes: ");
+		int numeroDeHospedes = sc.nextInt();
+	    
+	    LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
+	    LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida);
+	    
+	    long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
+	    
+	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
+	    
+	   
+	    
+//	    for (Hospede hospede : hospedes) {
+//			if (hospede.getCpf().equals(cpf)) { 
+//			
+//			}
+//	    }
+		
+	    //Reserva reserva = new Reserva(dataCheckIn, dataCheckOut);
+	    //criar reserva new reserva e passar as informações
+	    
+	    
+	    
 	    
 	}
 

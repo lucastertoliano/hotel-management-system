@@ -44,11 +44,11 @@ public class Hospede extends Pessoa {
 		this.numeroDeContato = numeroDeContato;
 	}
 
-	public ArrayList<Reserva> getReservas() {
+	public static ArrayList<Reserva> getReservas() {
 		return reservas;
 	}
 
-	public void setReservas(ArrayList<Reserva> reservas) {
+	public void setReservas(Reserva reserva) {
 		this.reservas = reservas;
 	}
 	public void adicionarReserva(Reserva reserva) {

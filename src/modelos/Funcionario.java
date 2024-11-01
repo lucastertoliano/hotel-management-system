@@ -57,7 +57,7 @@ public class Funcionario extends Pessoa { // Funcionario - nome, cpf, cargo, sal
 
 	@Override
 	public String toString() {
-		return super.toString() + ", Cargo: " + cargo + ", Turno: " + turno + ", Horas Trabalhadas: " + horasTrabalhadas + ", Valor Hora: " + valorHora;
+		return super.toString() + ", Cargo: " + cargo + ", Turno: " + turno + ", Horas Trabalhadas: " + horasTrabalhadas + ", Valor Hora: " + valorHora + ", Salário: " + horasTrabalhadas*valorHora;
 	}
 	
 	

@@ -5,12 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import abstracoes.Pessoa;
-import enums.Cargo;
-import enums.Turno;
 import interfaces.GerenciamentoInterface;
-import modelos.Funcionario;
 import modelos.Hospede;
-import modelos.Quarto;
 import modelos.Reserva;
 
 public class HospedeGerenciador implements GerenciamentoInterface {
@@ -56,15 +52,15 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 				System.out.println("Hóspede: " + hospede.getNome() + " | CPF: " + hospede.getCpf());
 			}
 		}
-		if (((Hospede) hospedes).getReservas().isEmpty()) { 
+		if (((Hospede) hospedes).getReservas().isEmpty()) {
 			System.out.println("- Nenhuma reserva encontrada para este hóspede.");
 		}else {
 			System.out.println(" Reserva: ");
-			for (Reserva reserva : Hospede.getReservas()){
-				System.out.println("- Reserva de:" + reserva.Hospede.getNome());
+			for (Reserva reserva : ((Hospede) hospedes).getReservas()){
+				System.out.println("- Reserva de:" + ( ((Pessoa) hospedes).getNome()));
 			    System.out.println("Data de entrada: " + reserva.getDataEntrada());
 			    System.out.println("Data de saída: " + reserva.getDataSaida());
-				System.out.println( "Quarto: " + + reserva.getNumero() + " (" + reserva.getTipo() + ")");
+				System.out.println( "Quarto: " + reserva.getQuarto().getNumero() + " (" + reserva.getQuarto().getTipo() + ")");
 			}
 		}
 		
@@ -138,6 +134,5 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	public void disponibilidade() {
 		System.out.println("Disponibilidade não é aplicável para Hóspedes.");
 	}
-
 	
 }

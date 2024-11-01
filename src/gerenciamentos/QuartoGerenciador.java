@@ -146,4 +146,5 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 		}
 		
 	}
+	
 }
