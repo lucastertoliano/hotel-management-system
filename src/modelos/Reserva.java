@@ -38,9 +38,4 @@ public class Reserva {
 	public String toString() {
 		return "Reserva - Quarto " + quarto.getNumero() + ", Data Check-In: " + dataCheckIn + ", Data Check-Out: " + dataCheckOut;
 	}
-	
-	
-	
-	
-	
 }

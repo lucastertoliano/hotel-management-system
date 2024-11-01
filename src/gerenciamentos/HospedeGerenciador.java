@@ -56,7 +56,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 				System.out.println("Hóspede: " + hospede.getNome() + " | CPF: " + hospede.getCpf());
 			}
 		}
-		/*if (((Hospede) hospedes).getReservas().isEmpty()) { 
+		if (((Hospede) hospedes).getReservas().isEmpty()) { 
 			System.out.println("- Nenhuma reserva encontrada para este hóspede.");
 		}else {
 			System.out.println(" Reserva: ");
@@ -67,7 +67,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 				System.out.println( "Quarto: " + + reserva.getNumero() + " (" + reserva.getTipo() + ")");
 			}
 		}
-		*/
+		
 	}
 
 	@Override
