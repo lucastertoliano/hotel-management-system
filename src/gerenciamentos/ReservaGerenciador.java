@@ -22,10 +22,11 @@ public class ReservaGerenciador implements GerenciamentoInterface {
 		reservas = new ArrayList<>();
 	}
 	
-	public void cadastrarReserva(Quarto quarto, Hospede hospede) {
+	public void cadastrarReserva(Quarto quarto) {
 		
 		System.out.println("Informe o CPF do Hóspede: ");
 		String cpf = sc.nextLine();
+		
 		
 		System.out.println("Informe a data do Check-In a seguir: ");
 		System.out.print("Dia: ");

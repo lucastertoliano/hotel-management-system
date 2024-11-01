@@ -9,6 +9,7 @@ import enums.Tipo;
 import excecoes.QuartoIndisponivelException;
 import interfaces.GerenciamentoInterface;
 import modelos.Quarto;
+import modelos.Reserva;
 
 public class QuartoGerenciador implements GerenciamentoInterface {
 	
@@ -132,8 +133,9 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 	public void cancelar() {
 		System.out.println("Cancelar não é aplicável para quartos.");	
 	}
-
-	@Override
+	
+	
+	@Override //imprime todos os quartos disponiveis para reserva.
 	public void disponibilidade() throws QuartoIndisponivelException {
 		if (!quartos.isEmpty()) {
 			for (Quarto quarto : quartos) {
@@ -145,6 +147,18 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 			}
 		}
 		
+	}
+	
+	public void checkIn(Quarto quarto) {
+		quarto.setStatus(Status.OCUPADO);
+		System.out.println("Check-In efetuado com sucesso! \nO Quarto " + quarto.getNumero() + " a partir de agora se encontra Ocupado.");
+	}
+	
+	//preciso do valor diaria de Quarto e diasDeEstadia de Reserva
+	public void checkOut(Quarto quarto, Reserva reserva) {
+		double custoDaEstadia = quarto.getDiaria() * reserva.
+		quarto.setStatus(Status.DISPONIVEL);
+		System.out.println("Check-Out efetuado com sucesso! \nO Quarto " + quarto.getNumero() + " já está novamente Disponível");
 	}
 	
 }
