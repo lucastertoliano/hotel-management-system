@@ -26,7 +26,7 @@ public class Main {
 	        	gerenciadorHospedes(sc, hotel);
 	            break;
 	        case 3:
-	        	//gerenciadorReservas(sc, hotel);
+	        	gerenciadorReservas(sc, hotel);
 	            break;
 	        case 4:	
 	        	gerenciadorFuncionarios(sc, hotel);
@@ -39,6 +39,11 @@ public class Main {
 			}
 			
 		} while (opcao != 5);
+	}
+
+	private static void gerenciadorReservas(Scanner sc, Hotel hotel) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private static void gerenciarQuartos(Scanner sc, Hotel hotel) {

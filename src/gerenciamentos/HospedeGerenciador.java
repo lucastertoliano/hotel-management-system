@@ -31,12 +31,12 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		int dataDeNascimento = sc.nextInt();
 		
 		System.out.println("Informe seu Endereço: ");
-		String endereco = sc.nextLine();
+		String endereco = sc.next();
 		
 		System.out.println("Informe um número para Contato: ");
 		int numeroDeContato = sc.nextInt();
 		
-		Hospede hospede = new Hospede(nome, cpf, dataDeNascimento, endereco, numeroDeContato);
+		Hospede hospede = new Hospede(nome,cpf,dataDeNascimento, endereco,numeroDeContato);
 		hospedes.add(hospede);
 		System.out.println("Hóspede cadastrado com sucesso!");
 		
@@ -44,23 +44,25 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 
 	@Override
 	public void vizualizar() { // acessar reservas hospede
-		if (hospedes.isEmpty()) {
-			System.out.println("Não temos nenhuma Reserva cadastrada!");
+		
+			System.out.println("Digite seu nome:");
+			if (hospedes.isEmpty()) {
+				System.out.println("Não temos nenhuma Reserva cadastrada!");
 		}
-		else {
-			for (Hospede hospede : hospedes) {
+			else {
+				for (Hospede hospede : hospedes) {
 				System.out.println("Hóspede: " + hospede.getNome() + " | CPF: " + hospede.getCpf());
 			}
 		}
-		if (((Hospede) hospedes).getReservas().isEmpty()) {
+			if (((Hospede) hospedes).getReservas().isEmpty()) {
 			System.out.println("- Nenhuma reserva encontrada para este hóspede.");
-		}else {
+			}else {
 			System.out.println(" Reserva: ");
-			for (Reserva reserva : ((Hospede) hospedes).getReservas()){
-				System.out.println("- Reserva de:" + ( ((Pessoa) hospedes).getNome()));
-			    System.out.println("Data de entrada: " + reserva.getDataEntrada());
-			    System.out.println("Data de saída: " + reserva.getDataSaida());
-				System.out.println( "Quarto: " + reserva.getQuarto().getNumero() + " (" + reserva.getQuarto().getTipo() + ")");
+				for (Reserva reserva : ((Hospede) hospedes).getReservas()){
+					System.out.println("- Reserva de:" + ( ((Pessoa) hospedes).getNome()));
+					System.out.println("Data de entrada: " + reserva.getDataEntrada());
+					System.out.println("Data de saída: " + reserva.getDataSaida());
+					System.out.println( "Quarto: " + reserva.getQuarto().getNumero() + " (" + reserva.getQuarto().getTipo() + ")");
 			}
 		}
 		
@@ -73,17 +75,20 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 
 	@Override
 	public void editar() {
-		System.out.print("Informe o CPF: ");
-		String cpf = sc.nextLine();
+		
+	System.out.print("Informe o CPF: ");
+	String cpf = sc.next();
 		
 		for (Hospede hospede : hospedes) {
 			if (hospede.getCpf().equals(cpf)) { 
 				
+				System.out.print("Informe os novos dados para alterar: ");
+				sc.nextLine();
 				System.out.print("Informe o nome: ");
 				String nome = sc.nextLine();
 				hospede.setNome(nome);
 				
-				System.out.print("Informe o CPF novamente: ");
+				System.out.print("Informe o CPF : ");
 				String cpfEdicao = sc.nextLine();
 				hospede.setCpf(cpfEdicao);
 				
@@ -105,7 +110,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 				return;
 			}
 		}
-		System.out.println("CPF não encontrado! Tente Novamente.");
+				System.out.println("CPF não encontrado! Tente Novamente.");
 	}
 
 	@Override
