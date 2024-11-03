@@ -13,7 +13,7 @@ public class Main {
 		int opcao;
 		
 		do {
-			System.out.println("\n ===== Menu De Gerenciamento ===== \n [1] Quartos \n [2] Hóspedes \n [3] Reservas \n [4] Funcionários \n [5] Sair");
+			System.out.println("\n ===== Menu De Gerenciamento ===== \n [1] Quartos \n [2] Hóspedes \n [3] Funcionários \n [4] Sair");
 			System.out.print("Informe a opção desejada: ");
 			opcao = sc.nextInt();
 			sc.nextLine();
@@ -26,24 +26,16 @@ public class Main {
 	        	gerenciadorHospedes(sc, hotel);
 	            break;
 	        case 3:
-	        	gerenciadorReservas(sc, hotel);
-	            break;
-	        case 4:	
 	        	gerenciadorFuncionarios(sc, hotel);
 	        	break;
-	        case 5:	
-	            System.out.println("Sessão encerrada.");
-	        	break;
+	        case 4:	
+	        	System.out.println("Sessão encerrada.");
+	        	break;  
 	        default:
 	            System.out.println("Opção inválida! Tente escolher um número entre 1 e 4.");
 			}
 			
-		} while (opcao != 5);
-	}
-
-	private static void gerenciadorReservas(Scanner sc, Hotel hotel) {
-		// TODO Auto-generated method stub
-		
+		} while (opcao != 4);
 	}
 
 	private static void gerenciarQuartos(Scanner sc, Hotel hotel) {
@@ -84,21 +76,21 @@ public class Main {
             opcaoHospede = sc.nextInt();
             sc.nextLine(); 
 		
-		switch(opcaoHospede) {
-		case 1:
-			hotel.cadastrarHospede();
-			break;
-		case 2:
-		    //hotel.vizualizarHospede();
-		    break;
-		case 3:
-			hotel.editarHospede();
-		case 4:
-			System.out.println(" --- Menu Hóspedes Encerrado ---");
-		default:
-			System.out.println("Opção inválida! Tente escolher um número entre 1 e 4.");
-				}
-			}while (opcaoHospede != 4);
+			switch(opcaoHospede) {
+			case 1:
+				hotel.cadastrarHospede();
+				break;
+			case 2:
+			    //hotel.vizualizarHospede();
+			    break;
+			case 3:
+				hotel.editarHospede();
+			case 4:
+				System.out.println(" --- Menu Hóspedes Encerrado ---");
+			default:
+				System.out.println("Opção inválida! Tente escolher um número entre 1 e 4.");
+			}
+		} while (opcaoHospede != 4);
 	}
 	
 	

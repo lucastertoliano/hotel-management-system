@@ -7,13 +7,11 @@ public class Hotel {
 	private QuartoGerenciador gerenciadorQuarto;
 	private HospedeGerenciador gerenciadorHospede;
 	private FuncionarioGerenciador gerenciadorFuncionario;
-	private ReservaGerenciador gerenciadorReserva;
 	
 	public Hotel() {
 		gerenciadorQuarto = new QuartoGerenciador();
 		gerenciadorHospede = new HospedeGerenciador();
 		gerenciadorFuncionario = new FuncionarioGerenciador();
-		gerenciadorReserva = new ReservaGerenciador();
 	}
 	
 	public void cadastrarQuarto() {

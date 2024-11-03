@@ -10,7 +10,7 @@ public class Hospede extends Pessoa {
 	private int dataDeNascimento;
 	private String endereco;
 	private int numeroDeContato;
-	private static ArrayList<Reserva> reservas;
+	private ArrayList<Reserva> reservas;
 
 	public Hospede(String nome, String cpf, int dataDeNascimento, String endereco, int numeroDeContatos) {
 		super(nome, cpf);
@@ -44,16 +44,18 @@ public class Hospede extends Pessoa {
 		this.numeroDeContato = numeroDeContato;
 	}
 
-	public static ArrayList<Reserva> getReservas() {
+	public ArrayList<Reserva> getReservas() {
 		return reservas;
 	}
 
-	public static void setReservas(Reserva reserva) {
-		
-	}
+	
+	//public static void setReservas(Reserva reserva) {	
+	//}
+
+	
 	public void adicionarReserva(Reserva reserva) {
-	        reservas.add(reserva);
-	    }
+		reservas.add(reserva);
+	}
 
 	@Override
 	public String toString() {

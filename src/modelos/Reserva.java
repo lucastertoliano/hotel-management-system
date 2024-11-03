@@ -25,7 +25,7 @@ public class Reserva {
 		this.quarto.setStatus(Status.OCUPADO);
 		//this.ativa = true;
 	}
-
+//
 	public Quarto getQuarto() {
 		return quarto;
 	}
@@ -48,6 +48,14 @@ public class Reserva {
 
 	public void setDataSaida(LocalDate dataCheckOut) {
 		this.dataCheckOut = dataCheckOut;
+	}
+
+	public long getDiasDeEstadia() {
+		return diasDeEstadia;
+	}
+
+	public void setDiasDeEstadia(long diasDeEstadia) {
+		this.diasDeEstadia = diasDeEstadia;
 	}
 
 	@Override

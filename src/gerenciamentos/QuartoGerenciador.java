@@ -156,7 +156,8 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 	
 	//preciso do valor diaria de Quarto e diasDeEstadia de Reserva
 	public void checkOut(Quarto quarto, Reserva reserva) {
-		double custoDaEstadia = quarto.getDiaria() * reserva.
+		double custoDaEstadia = quarto.getDiaria() * reserva.getDiasDeEstadia();
+		System.out.println("Custo Total Estadia: R$" + custoDaEstadia);
 		quarto.setStatus(Status.DISPONIVEL);
 		System.out.println("Check-Out efetuado com sucesso! \nO Quarto " + quarto.getNumero() + " já está novamente Disponível");
 	}

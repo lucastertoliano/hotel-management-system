@@ -1,12 +1,16 @@
 package gerenciamentos;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import abstracoes.Pessoa;
+import enums.Tipo;
 import interfaces.GerenciamentoInterface;
 import modelos.Hospede;
+import modelos.Quarto;
 import modelos.Reserva;
 
 public class HospedeGerenciador implements GerenciamentoInterface {
@@ -18,6 +22,78 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		hospedes = new ArrayList<>();
 	}
 
+	// cadastra uma reserva do hospede
+	public void criarReserva() {
+		
+		System.out.println("Informe o CPF do Hóspede: ");
+		String cpf = sc.nextLine();
+		
+		System.out.println("Informe a data do Check-In a seguir: ");
+		System.out.print("Dia: ");
+		int diaEntrada = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Mês: ");
+		int mesEntrada = sc.nextInt(); 
+		sc.nextLine();
+		System.out.print("Ano: ");
+		int anoEntrada = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Informe a data do Check-Out a seguir: ");
+		System.out.print("Dia: ");
+		int diaSaida = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Mês: ");
+		int mesSaida = sc.nextInt(); 
+		sc.nextLine();
+		System.out.print("Ano: ");
+		int anoSaida = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
+		int opcaoTipo = sc.nextInt();
+		
+		Tipo tipoQuarto = null;
+		switch (opcaoTipo) {
+        case 1:
+        	tipoQuarto = Tipo.SOLTEIRO;
+            break;
+        case 2:
+        	tipoQuarto = Tipo.CASAL;
+            break;
+        case 3:
+        	tipoQuarto = Tipo.SUITE;
+            break;
+        default:
+            System.out.println("Opção inválida! Tente novamente.");
+            return;
+		}
+		
+		System.out.println("Informe o número de hóspedes: ");
+		int numeroDeHospedes = sc.nextInt();
+	    
+	    LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
+	    LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida);
+	    
+	    long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
+	    
+	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
+	    
+	    for (Hospede hospede : hospedes) {
+	    	if (hospede.getCpf().equals(cpf)) {
+	    		hospede.adicionarReserva(reserva);
+	    	}
+	    }
+	    //for percorrendo o array hospede e se for igual o cpf ai hospede.add reserva
+	    //hospede.adicionarReserva(reserva);
+	  
+	}
+	
+	public void cancelarReserva() {
+		
+	}
+	
+	// cadastra um hóspede
 	@Override
 	public void cadastrar() {
 		
@@ -41,30 +117,9 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		System.out.println("Hóspede cadastrado com sucesso!");
 		
 	}
-
-	@Override
-	public void vizualizar() { // acessar reservas hospede
-		
-			System.out.println("Digite seu nome:");
-			if (hospedes.isEmpty()) {
-				System.out.println("Não temos nenhuma Reserva cadastrada!");
-		}
-			else {
-				for (Hospede hospede : hospedes) {
-				System.out.println("Hóspede: " + hospede.getNome() + " | CPF: " + hospede.getCpf());
-			}
-		}
-			if (((Hospede) hospedes).getReservas().isEmpty()) {
-			System.out.println("- Nenhuma reserva encontrada para este hóspede.");
-			}else {
-			System.out.println(" Reserva: ");
-				for (Reserva reserva : ((Hospede) hospedes).getReservas()){
-					System.out.println("- Reserva de:" + ( ((Pessoa) hospedes).getNome()));
-					System.out.println("Data de entrada: " + reserva.getDataEntrada());
-					System.out.println("Data de saída: " + reserva.getDataSaida());
-					System.out.println( "Quarto: " + reserva.getQuarto().getNumero() + " (" + reserva.getQuarto().getTipo() + ")");
-			}
-		}
+	
+	@Override //vizualizar historico de reservas de um hospede
+	public void vizualizar() {
 		
 	}
 
@@ -129,7 +184,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 
 	}
 
-	@Override
+	@Override // cancelar reserva
 	public void cancelar() {
 		System.out.println("Cancelar não é aplicável para Hóspedes.");	
 
