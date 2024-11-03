@@ -22,11 +22,24 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		hospedes = new ArrayList<>();
 	}
 
-	// cadastra uma reserva do hospede
+	//cadastra uma reserva do hóspede
 	public void criarReserva() {
 		
 		System.out.println("Informe o CPF do Hóspede: ");
 		String cpf = sc.nextLine();
+		
+        Hospede hospede = null;
+        for (Hospede h : hospedes) {
+            if (h.getCpf().equals(cpf)) {
+                hospede = h;
+                break;
+            }
+        }
+        
+        if (hospede == null) {
+            System.out.println("Hóspede não encontrado no sistema!");
+            return;
+        }
 		
 		System.out.println("Informe a data do Check-In a seguir: ");
 		System.out.print("Dia: ");
@@ -77,23 +90,22 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	    
 	    long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
 	    
-	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
-	    
-	    for (Hospede hospede : hospedes) {
-	    	if (hospede.getCpf().equals(cpf)) {
-	    		hospede.adicionarReserva(reserva);
-	    	}
+	    if (diasDeEstadia < 0) {
+	    	System.out.println("Verifique as datas de Check-In e Check-Out e tente novamente.");
+	    	return;
 	    }
-	    //for percorrendo o array hospede e se for igual o cpf ai hospede.add reserva
-	    //hospede.adicionarReserva(reserva);
-	  
+	    
+	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
+	    hospede.adicionarReserva(reserva);
+	    
 	}
 	
+	//cancela uma reserva
 	public void cancelarReserva() {
 		
 	}
 	
-	// cadastra um hóspede
+	//cadastra um hóspede
 	@Override
 	public void cadastrar() {
 		

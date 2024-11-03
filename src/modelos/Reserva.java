@@ -14,7 +14,7 @@ public class Reserva {
 	private int numeroDeHospedes;
 	private Quarto quarto;
 	private long diasDeEstadia;
-	//private boolean ativa;
+	private boolean ativa; // indica se a reserva está ativa ou não
 	
 	public Reserva(LocalDate dataCheckIn, LocalDate dataCheckOut, Tipo tipoQuarto, int numeroDeHospedes, long diasDeEstadia) {
 		this.dataCheckIn = dataCheckIn;
@@ -22,10 +22,11 @@ public class Reserva {
 		this.tipoQuarto = tipoQuarto;
 		this.numeroDeHospedes = numeroDeHospedes;
 		this.diasDeEstadia = diasDeEstadia;
+		this.ativa = true;
 		this.quarto.setStatus(Status.OCUPADO);
-		//this.ativa = true;
+		
 	}
-//
+
 	public Quarto getQuarto() {
 		return quarto;
 	}
