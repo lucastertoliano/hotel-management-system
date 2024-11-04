@@ -81,12 +81,14 @@ public class Main {
 				hotel.cadastrarHospede();
 				break;
 			case 2:
-			    //hotel.vizualizarHospede();
+			    hotel.vizualizarHistoricoDeEstadias();
 			    break;
 			case 3:
 				hotel.editarHospede();
+				break;
 			case 4:
 				System.out.println(" --- Menu Hóspedes Encerrado ---");
+				break;
 			default:
 				System.out.println("Opção inválida! Tente escolher um número entre 1 e 4.");
 			}

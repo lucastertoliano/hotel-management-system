@@ -37,7 +37,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
         }
         
         if (hospede == null) {
-            System.out.println("Hóspede não encontrado no sistema!");
+            System.out.println("Hóspede não cadastrado no sistema!");
             return;
         }
 		
@@ -63,6 +63,16 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		int anoSaida = sc.nextInt();
 		sc.nextLine();
 		
+		LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
+		LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida);
+		    
+		long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
+		
+	    if (diasDeEstadia < 0) {
+	    	System.out.println("Verifique as datas de Check-In e Check-Out e tente novamente.");
+	    	return;
+	    }
+		
 		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
 		int opcaoTipo = sc.nextInt();
 		
@@ -85,24 +95,35 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		System.out.println("Informe o número de hóspedes: ");
 		int numeroDeHospedes = sc.nextInt();
 	    
-	    LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
-	    LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida);
-	    
-	    long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
-	    
-	    if (diasDeEstadia < 0) {
-	    	System.out.println("Verifique as datas de Check-In e Check-Out e tente novamente.");
-	    	return;
-	    }
-	    
 	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
 	    hospede.adicionarReserva(reserva);
+	    System.out.println("Reserva criada com sucesso!");
 	    
 	}
 	
-	//cancela uma reserva
-	public void cancelarReserva() {
-		
+	@Override //cancela uma reserva
+	public void cancelar() {
+//		
+//		System.out.println("Informe o CPF do Hóspede: ");
+//		String cpf = sc.nextLine();
+//		
+//		Hospede hospede = null;
+//        for (Hospede h : hospedes) {
+//            if (h.getCpf().equals(cpf)) {
+//            	if(h.)
+//            	
+//            		hospede = h;
+//            		break;
+//            }
+//        }
+//        
+//        if (hospede == null) {
+//            System.out.println("Hóspede não cadastrado no sistema!");
+//            return;
+//        }
+//        
+        
+	
 	}
 	
 	//cadastra um hóspede
@@ -130,9 +151,42 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		
 	}
 	
-	@Override //vizualizar historico de reservas de um hospede
+	@Override // vizualizar historico de reservas de um hospede
 	public void vizualizar() {
 		
+		if (hospedes.isEmpty()) {
+			System.out.println("Não temos nenhum Hóspede cadastrado e consequentemente nenhuma Reserva.");
+			return;
+		}
+
+		System.out.println("Insira o CPF:");
+		String cpf = sc.nextLine();
+
+		Hospede hospede = null;
+	    for (Hospede h : hospedes) {
+	        if (h.getCpf().equals(cpf)) {
+	            hospede = h;
+	            break;
+	        }
+	    }
+	    
+	    if (hospede == null) {
+	        System.out.println("Hóspede não cadastrado no sistema!");
+	        return;
+	    }
+	    
+	    ArrayList<Reserva> reservas = hospede.getReservas();
+	    if (reservas.isEmpty()) {
+	        System.out.println("Este hóspede não possui nenhuma reserva no histórico.");
+	        return;
+	    }
+	    
+	    System.out.println("Histórico de Reservas do Hóspede " + hospede.getNome() + ":");
+		for (Reserva reserva : reservas) {
+			System.out.println(reserva);
+		}
+		
+		System.out.println("Histórico de Reservas exibido com sucesso!");
 	}
 
 	@Override
@@ -193,12 +247,6 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	@Override
 	public void criar() {
 		System.out.println("Criar não é aplicável para Hóspedes.");
-
-	}
-
-	@Override // cancelar reserva
-	public void cancelar() {
-		System.out.println("Cancelar não é aplicável para Hóspedes.");	
 
 	}
 

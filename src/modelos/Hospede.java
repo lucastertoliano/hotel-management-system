@@ -9,7 +9,7 @@ public class Hospede extends Pessoa {
 	private int dataDeNascimento;
 	private String endereco;
 	private int numeroDeContato;
-	private ArrayList<Reserva> reservas;
+	private ArrayList<Reserva> reservas; //historico de estadias
 
 	public Hospede(String nome, String cpf, int dataDeNascimento, String endereco, int numeroDeContatos) {
 		super(nome, cpf);
@@ -43,6 +43,7 @@ public class Hospede extends Pessoa {
 		this.numeroDeContato = numeroDeContato;
 	}
 
+	//retorna o historico de reservas do hospede
 	public ArrayList<Reserva> getReservas() {
 		return reservas;
 	}

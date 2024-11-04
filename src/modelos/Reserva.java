@@ -59,6 +59,15 @@ public class Reserva {
 		this.diasDeEstadia = diasDeEstadia;
 	}
 
+	public boolean isAtiva() {
+		return ativa;
+	}
+
+	//desativa o atributo ativa
+	public void setAtiva(boolean ativa) {
+		ativa = false;
+	}
+
 	@Override
 	public String toString() {
 		return "Reserva - Quarto " + quarto.getNumero() + ", Data Check-In: " + dataCheckIn + ", Data Check-Out: " + dataCheckOut + ", Tempo de Estadia: " + diasDeEstadia + " Dias";
