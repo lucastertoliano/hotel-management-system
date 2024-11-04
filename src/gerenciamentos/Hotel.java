@@ -38,6 +38,14 @@ public class Hotel {
 		gerenciadorHospede.editar();
 	}
 	
+	public void cadastrarReserva() {
+		gerenciadorHospede.criarReserva();
+	}
+	
+	public void cancelarReserva() {
+		gerenciadorHospede.cancelar();
+	}
+	
 	public void verificarDisponibilidade () {
 		try {
 			gerenciadorQuarto.disponibilidade();
