@@ -26,10 +26,10 @@ public class Main {
 	        	gerenciarHospedes(sc, hotel);
 	            break;
 	        case 3:
-	        	gerenciarFuncionarios(sc, hotel);
-	        	break;
-	        case 4:	
 	        	gerenciarReservas(sc, hotel);
+	        	break;
+	        case 4:
+	        	gerenciarFuncionarios(sc, hotel);
 	        	break;
 	        case 5:
 	        	System.out.println("Sessão encerrada.");
@@ -38,7 +38,7 @@ public class Main {
 	            System.out.println("Opção inválida! Tente escolher um número entre 1 e 5.");
 			}
 			
-		} while (opcao != 4);
+		} while (opcao != 5);
 	}
 
 	private static void gerenciarQuartos(Scanner sc, Hotel hotel) {
@@ -102,7 +102,7 @@ public class Main {
 		int opcaoReserva;
 		
 		do {
-			System.out.println("\n ===== Menu Hóspedes ===== \n [1] Cadastrar \n [2] Vizualizar Histórico \n [3] Editar \n [4] Voltar ao Menu de Gerenciamento");
+			System.out.println("\n ===== Menu Reservas ===== \n [1] Cadastrar \n [2] Cancelar \n [3] Verificar Disponibilidade \n [4] Voltar ao Menu de Gerenciamento");
             System.out.print("Informe a opção desejada: ");
             opcaoReserva = sc.nextInt();
             sc.nextLine(); 
@@ -124,7 +124,6 @@ public class Main {
 				System.out.println("Opção inválida! Tente escolher um número entre 1 e 4.");
 			}
 		} while (opcaoReserva != 4);
-		
 		
 	}
 	

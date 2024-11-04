@@ -25,7 +25,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	//cadastra uma reserva do hóspede
 	public void criarReserva() {
 		
-		System.out.println("Informe o CPF do Hóspede: ");
+		System.out.print("Informe o CPF do Hóspede: ");
 		String cpf = sc.nextLine();
 		
         Hospede hospede = null;
@@ -37,7 +37,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
         }
         
         if (hospede == null) {
-            System.out.println("Hóspede não cadastrado no sistema!");
+            System.out.print("Hóspede não cadastrado no sistema!");
             return;
         }
 		
@@ -64,17 +64,11 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		sc.nextLine();
 		
 		LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
-		LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida);
-		    
-		long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut); //dias de estadia do hospede
-		
-	    if (diasDeEstadia < 0) {
-	    	System.out.println("Verifique as datas de Check-In e Check-Out e tente novamente.");
-	    	return;
-	    }
+		LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida); 
 		
 		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
 		int opcaoTipo = sc.nextInt();
+		sc.nextLine();
 		
 		Tipo tipoQuarto = null;
 		switch (opcaoTipo) {
@@ -94,7 +88,9 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		
 		System.out.println("Informe o número de hóspedes: ");
 		int numeroDeHospedes = sc.nextInt();
+		sc.nextLine();
 	    
+		long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut);
 	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
 	    hospede.adicionarReserva(reserva);
 	    System.out.println("Reserva criada com sucesso!");
@@ -130,20 +126,22 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	@Override
 	public void cadastrar() {
 		
-		System.out.println("Informe o seu nome: ");
+		System.out.print("Informe o seu nome: ");
 		String nome = sc.nextLine();
 		
 		System.out.print("Informe o CPF: "); 
 		String cpf = sc.nextLine();
 		
-		System.out.println("Informe a data de Nascimento: ");
+		System.out.print("Informe a data de Nascimento: ");
 		int dataDeNascimento = sc.nextInt();
+		sc.nextLine();
 		
-		System.out.println("Informe seu Endereço: ");
-		String endereco = sc.next();
+		System.out.print("Informe seu Endereço: ");
+		String endereco = sc.nextLine();
 		
-		System.out.println("Informe um número para Contato: ");
+		System.out.print("Informe um número para Contato: ");
 		int numeroDeContato = sc.nextInt();
+		sc.nextLine();
 		
 		Hospede hospede = new Hospede(nome,cpf,dataDeNascimento, endereco,numeroDeContato);
 		hospedes.add(hospede);
@@ -159,7 +157,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 			return;
 		}
 
-		System.out.println("Insira o CPF:");
+		System.out.print("Insira o CPF: ");
 		String cpf = sc.nextLine();
 
 		Hospede hospede = null;
@@ -203,7 +201,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		for (Hospede hospede : hospedes) {
 			if (hospede.getCpf().equals(cpf)) { 
 				
-				System.out.print("Informe os novos dados para alterar: ");
+				System.out.println("Hóspede encontrado, informe novamente seus dados: ");
 				sc.nextLine();
 				System.out.print("Informe o nome: ");
 				String nome = sc.nextLine();
