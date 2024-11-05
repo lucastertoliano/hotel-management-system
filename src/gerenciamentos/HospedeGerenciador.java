@@ -3,6 +3,7 @@ package gerenciamentos;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,7 +41,7 @@ public class HospedeGerenciador implements GerenciamentoInterface {
             System.out.print("Hóspede não cadastrado no sistema!");
             return;
         }
-		
+       
 		System.out.println("Informe a data do Check-In a seguir: ");
 		System.out.print("Dia: ");
 		int diaEntrada = sc.nextInt();
@@ -85,16 +86,16 @@ public class HospedeGerenciador implements GerenciamentoInterface {
             System.out.println("Opção inválida! Tente novamente.");
             return;
 		}
-		
+	
 		System.out.println("Informe o número de hóspedes: ");
 		int numeroDeHospedes = sc.nextInt();
 		sc.nextLine();
 	    
 		long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut);
+		
 	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
 	    hospede.adicionarReserva(reserva);
 	    System.out.println("Reserva criada com sucesso!");
-	    
 	}
 	
 	@Override //cancela uma reserva
@@ -143,10 +144,11 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		int numeroDeContato = sc.nextInt();
 		sc.nextLine();
 		
+		
 		Hospede hospede = new Hospede(nome,cpf,dataDeNascimento, endereco,numeroDeContato);
 		hospedes.add(hospede);
 		System.out.println("Hóspede cadastrado com sucesso!");
-		
+	   
 	}
 	
 	@Override // vizualizar historico de reservas de um hospede
