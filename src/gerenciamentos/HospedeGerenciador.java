@@ -63,8 +63,8 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		int anoSaida = sc.nextInt();
 		sc.nextLine();
 		
-		LocalDate dataCheckIn = LocalDate.of(diaEntrada, mesEntrada, anoEntrada);
-		LocalDate dataCheckOut = LocalDate.of(diaSaida, mesSaida, anoSaida); 
+		LocalDate dataCheckIn = LocalDate.of(anoEntrada, mesEntrada, diaEntrada);
+		LocalDate dataCheckOut = LocalDate.of(anoSaida, mesSaida, diaSaida); 
 		
 		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
 		int opcaoTipo = sc.nextInt();

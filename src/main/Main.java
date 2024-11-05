@@ -82,6 +82,7 @@ public class Main {
 			switch(opcaoHospede) {
 			case 1:
 				hotel.cadastrarHospede();
+				hotel.cadastrarReserva();
 				break;
 			case 2:
 			    hotel.vizualizarHistoricoDeEstadias();
