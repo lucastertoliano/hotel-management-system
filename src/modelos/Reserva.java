@@ -23,7 +23,8 @@ public class Reserva {
 		this.numeroDeHospedes = numeroDeHospedes;
 		this.diasDeEstadia = diasDeEstadia;
 		this.ativa = true;
-		this.quarto.setStatus(Status.OCUPADO);
+		Quarto quarto = new Quarto(0, null, 0, 0);
+		quarto.setStatus(Status.OCUPADO);
 		
 	}
 
@@ -70,7 +71,6 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Reserva - Quarto " + quarto.getNumero() + ", Data Check-In: " + dataCheckIn + ", Data Check-Out: " + dataCheckOut + ", Tempo de Estadia: " + diasDeEstadia + " Dias";
-	
+		return "Reserva - " + " Data Check-In: " + dataCheckIn + ", Data Check-Out: " + dataCheckOut + ", Tempo de Estadia: " + diasDeEstadia + " Dias";
 	}
 }
