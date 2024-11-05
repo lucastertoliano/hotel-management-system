@@ -146,6 +146,10 @@ public class QuartoGerenciador implements GerenciamentoInterface {
 				}
 			}
 		}
+		else {
+			System.out.println("Não há nenhum quarto cadastrado no momento!");
+			return;
+		}
 		
 	}
 }

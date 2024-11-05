@@ -54,6 +54,10 @@ public class Hotel {
 		}
 	}
 	
+	public void checkOut() {
+		gerenciadorHospede.checkOut();
+	}
+	
 	public void cadastrarFuncionario() {
 		gerenciadorFuncionario.cadastrar();
 	}

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import abstracoes.Pessoa;
+import enums.Status;
 import enums.Tipo;
 import interfaces.GerenciamentoInterface;
 import modelos.Hospede;
@@ -42,30 +43,13 @@ public class HospedeGerenciador implements GerenciamentoInterface {
             return;
         }
        
-		System.out.println("Informe a data do Check-In a seguir: ");
-		System.out.print("Dia: ");
-		int diaEntrada = sc.nextInt();
-		sc.nextLine();
-		System.out.print("Mês: ");
-		int mesEntrada = sc.nextInt(); 
-		sc.nextLine();
-		System.out.print("Ano: ");
-		int anoEntrada = sc.nextInt();
-		sc.nextLine();
+		System.out.println("Informe a data do Check-In a seguir, no formato AAAA-MM-DD: ");
+		String dataEntrada = sc.nextLine();
+		LocalDate dataCheckIn = LocalDate.parse(dataEntrada);
 		
-		System.out.println("Informe a data do Check-Out a seguir: ");
-		System.out.print("Dia: ");
-		int diaSaida = sc.nextInt();
-		sc.nextLine();
-		System.out.print("Mês: ");
-		int mesSaida = sc.nextInt(); 
-		sc.nextLine();
-		System.out.print("Ano: ");
-		int anoSaida = sc.nextInt();
-		sc.nextLine();
-		
-		LocalDate dataCheckIn = LocalDate.of(anoEntrada, mesEntrada, diaEntrada);
-		LocalDate dataCheckOut = LocalDate.of(anoSaida, mesSaida, diaSaida); 
+		System.out.println("Informe a data do Check-Out a seguir, no formato AAAA-MM-DD: ");
+		String dataSaida = sc.nextLine();
+		LocalDate dataCheckOut = LocalDate.parse(dataSaida);
 		
 		System.out.println("Informe o a opção correspondente ao tipo do quarto: [1]Solteiro [2]Casal [3]Suíte");
 		int opcaoTipo = sc.nextInt();
@@ -92,33 +76,45 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 		sc.nextLine();
 	    
 		long diasDeEstadia = ChronoUnit.DAYS.between(dataCheckIn, dataCheckOut);
-		
 	    Reserva reserva = new Reserva(dataCheckIn, dataCheckOut, tipoQuarto, numeroDeHospedes, diasDeEstadia);
 	    hospede.adicionarReserva(reserva);
+	    
 	    System.out.println("Reserva criada com sucesso!");
 	}
 	
 	@Override //cancela uma reserva
 	public void cancelar() {
-//		
-//		System.out.println("Informe o CPF do Hóspede: ");
-//		String cpf = sc.nextLine();
-//		
-//		Hospede hospede = null;
-//        for (Hospede h : hospedes) {
-//            if (h.getCpf().equals(cpf)) {
-//            	if(h.)
-//            	
-//            		hospede = h;
-//            		break;
-//            }
-//        }
-//        
-//        if (hospede == null) {
-//            System.out.println("Hóspede não cadastrado no sistema!");
-//            return;
-//        }
-//        
+		
+		System.out.println("Insira o CPF do Hóspede: ");
+        String cpf = sc.nextLine();
+        
+        if (cpf.isEmpty()) {
+            System.out.println("CPF errado, tente novamente!");
+            return;
+        }
+        
+        Hospede hospede = null;
+        for (Hospede h : hospedes) {
+            if (h.getCpf().equals(cpf)) {
+                hospede = h;
+                break;
+            }
+        }
+        
+        if (hospede == null) {
+            System.out.print("Hóspede não cadastrado no sistema!");
+            return;
+        }
+      
+        ArrayList<Reserva> reservas = hospede.getReservas();
+        
+        for(Reserva reserva : reservas) {
+        	if(reserva.isAtiva() == true) {
+        		reserva.setAtiva(false);
+        	}
+        }
+        
+        System.out.println("Reserva cancelada com sucesso!");
         
 	
 	}
@@ -253,6 +249,56 @@ public class HospedeGerenciador implements GerenciamentoInterface {
 	@Override
 	public void disponibilidade() {
 		System.out.println("Disponibilidade não é aplicável para Hóspedes.");
+	}
+	
+	public void checkIn() {
+		
+	}
+	
+	public void checkOut() {
+		
+		System.out.println("Insira o CPF do Hóspede: ");
+        String cpf = sc.nextLine();
+        
+        if (cpf.isEmpty()) {
+            System.out.println("CPF errado, tente novamente!");
+            return;
+        }
+        
+        Hospede hospede = null;
+        for (Hospede h : hospedes) {
+            if (h.getCpf().equals(cpf)) {
+                hospede = h;
+                break;
+            }
+        }
+        
+        if (hospede == null) {
+            System.out.print("Hóspede não cadastrado no sistema!");
+            return;
+        }
+      
+        ArrayList<Reserva> reservas = hospede.getReservas();
+        
+        for(Reserva reserva : reservas) {
+        	if(reserva.isAtiva() == true) {
+        		if(reserva.getTipoQuarto() == Tipo.SOLTEIRO) {
+        			System.out.println("Valor da estadia: R$" + reserva.getDiasDeEstadia() * 200);
+        		}
+        		else if(reserva.getTipoQuarto() == Tipo.CASAL)  {
+        			System.out.println("Valor da estadia: R$" + reserva.getDiasDeEstadia() * 350);
+        		}
+        		else if(reserva.getTipoQuarto() == Tipo.SUITE)  {
+        			System.out.println("Valor da estadia: R$" + reserva.getDiasDeEstadia() * 500);
+        		}
+        			
+        		reserva.setAtiva(false);
+        		System.out.println("Check-Out efetuado com sucesso, Quarto liberado!");
+        		return;
+        	}
+        }
+        
+        System.out.println("Esse hóspede não possui uma reserva ativa!");
 	}
 	
 }
